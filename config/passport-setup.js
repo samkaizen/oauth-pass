@@ -20,7 +20,7 @@ passport.deserializeUser((id, done) => {
      done(null, user); // Now we have access to this very user => this very Record having the exact id
 
    })
-  // the user id is the _id of the user defibed inside of the Db
+  // the user id is the _id of the user defined inside of the Db
   // we take this identifying piece called id and stuff it inside the Cookie
 });
 
@@ -30,7 +30,8 @@ passport.use(
         clientID: keys.google.clientID,
         clientSecret: keys.google.clientSecret,
         callbackURL: '/auth/google/redirect'
-    }, (accessToken, refreshToken, profile, done) => {
+    }, /*passport Callback*/
+     (accessToken, refreshToken, profile, done) => {
         // check if user already exists in our own db
         // if googleId === profile.id that means that the user has been already Authenticated
         User.findOne({googleId: profile.id}).then((existingUser) => {

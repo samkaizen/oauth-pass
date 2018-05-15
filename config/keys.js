@@ -7,5 +7,8 @@ module.exports = {
         },
         mongodb : {
              dbURI : 'mongodb://test:test@ds217970.mlab.com:17970/oauth-test-2018'
+        },
+        session : {
+          cookieKey : 'thisIsTheStringWeChoosedToEncryptTheCookie2018-05-14',//this has to be just Unique 
         }
 };
