@@ -9,7 +9,7 @@
                 margin: 0;
             }
             nav{
-                background: lightseagreen;
+                background: #ff5353;
                 padding: 20px 10px;
             }
             nav ul{
@@ -40,10 +40,25 @@
     </head>
     <body>
         <nav>
+            <!--Conditionally control the apearing of login/logout depending on if the user exist(authenticated or not ) -->
+            <!--Notice that BEFORE OUTPUTING any html tag (li) we close the brakets like so 
+                 %>
+            
+             <% if(user){ %>
+                 <li>some items</li>
+             <% }else{  %>
+                 <li>other item</li>
+             <% } %>
+             -->
             <ul>
-                <li><a href="/auth/logout">Logout</a></li>
+                <% if (user) { %>
+                <li><a href="/auth/logout">Log out</a></li>
+                <% } else { %>
                 <li><a href="/auth/login">Login</a></li>
+                <% } %>
+
                 <li><a href="/">Homepage</a></li>
+                <li><a href="/profile">Profile</a></li>
             </ul>
         </nav>
         <header>

@@ -3,13 +3,16 @@ const passport = require('passport');
 
 // auth login
 router.get('/login', (req, res) => {
-    res.render('login');
+    res.render('login', {user : req.user});
 });
 
 // auth logout
 router.get('/logout', (req, res) => {
     // handle with passport
-    res.send('logging out');
+    //res.send('logging out');
+    req.logout(); // behind the scene passport destroyed the cookie by removing thz user id from it 
+    // now after logging user out we wanna redirect them to the home page 
+    res.redirect('/');
 });
 
 // auth with google+e  => this will be triggered Once we click sign in with google+ and once clicked this will give us access to the CONSENT SCREEN
